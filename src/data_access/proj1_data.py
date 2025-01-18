@@ -47,7 +47,7 @@ class Proj1Data:
             # Convert collection data to DataFrame and preprocess
             print("Fetching data from mongoDB")
             df = pd.read_csv('notebook/data.csv')
-            #df=pd.DataFrame(list(collection.find()))
+            #df=pd.DataFrame(list(collection.find())) uncomment this line to fetch data from mongoDB 
             print(f"Data fecthed with len: {len(df)}")
             return df
 
