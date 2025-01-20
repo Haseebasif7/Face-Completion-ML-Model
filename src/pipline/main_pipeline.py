@@ -4,21 +4,15 @@ from src.logger import logging
 
 from src.components.data_ingestion import DataIngestion
 
-from src.components.data_transformation import DataTransformation
-'''
-from src.components.model_evaluation import ModelEvaluation
-from src.components.model_pusher import ModelPusher'''
+from src.components.training import DataTransformation
 
 from src.entity.config_entity import (DataIngestionConfig,
                                       DataTransformationConfig,
-                                      # ModelEvaluationConfig,
-                                      # ModelPusherConfig
 )
 
 from src.entity.artifact_entity import (DataIngestionArtifact,
                                         DataTransformationArtifact,
-                                        # ModelEvaluationArtifact,
-                                        # ModelPusherArtifact
+
 )
 
 
@@ -26,8 +20,6 @@ class TrainPipeline:
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()
         self.data_transformation_config = DataTransformationConfig()
-        #self.model_evaluation_config = ModelEvaluationConfig()
-        #self.model_pusher_config = ModelPusherConfig()
 
     def start_data_ingestion(self) -> DataIngestionArtifact:
         """
@@ -66,13 +58,6 @@ class TrainPipeline:
             data_ingestion_artifact = self.start_data_ingestion()
             data_transformation_artifact = self.start_data_transformation(
             data_ingestion_artifact=data_ingestion_artifact)
-            '''
-            model_evaluation_artifact = self.start_model_evaluation(data_ingestion_artifact=data_ingestion_artifact,
-                                                                    model_trainer_artifact=model_trainer_artifact)
-            if not model_evaluation_artifact.is_model_accepted:
-                logging.info(f"Model not accepted.")
-                return None
-            model_pusher_artifact = self.start_model_pusher(model_evaluation_artifact=model_evaluation_artifact)'''
-            
+
         except Exception as e:
             raise MyException(e, sys)
