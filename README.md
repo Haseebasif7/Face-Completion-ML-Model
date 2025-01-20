@@ -10,7 +10,7 @@ This project involves predicting the lower part of a face image based on the upp
 - **Hyperparameter Tuning:** The model can be further enhanced by adjusting the hyperparameters, such as `n_estimators` ,`min_samples_split`,`max_depth`, for better predictions (though hyperparameter optimization was simplified for this project). Didnt done as due to computation issues
 - **MultiOutputRegressor:** Handles the multi-output regression task by predicting an array of pixel values at once for each image.
 - Added MongoDB for own practice not needed to train the model.
-- 
+
 ### Results
 
 The models output completed faces where the predicted lower part is merged with the upper part, resulting in a full face image. The evaluation results include MAE for each model, allowing comparison of performance.
